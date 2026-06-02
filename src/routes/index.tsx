@@ -32,7 +32,7 @@ const projects = [
       "Implemented profile CRUD commands and paginated data export (JSON/CSV).",
       "Added a local config store for tokens and per-environment endpoints.",
     ],
-    proof: "github.com/taterbro",
+    proof: "https://github.com/Taterbro/insighta",
   },
   {
     id: "02",
