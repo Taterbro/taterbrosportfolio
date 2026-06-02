@@ -45,7 +45,7 @@ const projects = [
       "Implemented OAuth2 server flows and role-scoped middleware.",
       "Exposed the same endpoints to CLI and web clients with consistent error contracts.",
     ],
-    proof: "github.com/taterbro",
+    proof: "https://github.com/Taterbro/backendStageZero",
   },
   {
     id: "03",
@@ -93,7 +93,7 @@ function Portfolio() {
             cloud-native architectures, with an emphasis on clean design and performance.
           </p>
           <dl className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 text-sm">
-            <Meta label="Location" value="Remote · WAT (UTC+1)" />
+            <Meta label="Location" value="Abuja, Nigeria · Remote · WAT (UTC+1)" />
             <Meta label="Email" value="veecipher@proton.me" href="mailto:veecipher@proton.me" />
             <Meta label="GitHub" value="github.com/taterbro" href="https://github.com/taterbro" />
             <Meta label="Status" value="Open to backend roles" />
