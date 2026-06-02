@@ -32,7 +32,7 @@ const projects = [
       "Implemented profile CRUD commands and paginated data export (JSON/CSV).",
       "Added a local config store for tokens and per-environment endpoints.",
     ],
-    proof: "github.com/taterbro",
+    proof: "https://github.com/Taterbro/insighta",
   },
   {
     id: "02",
@@ -45,7 +45,7 @@ const projects = [
       "Implemented OAuth2 server flows and role-scoped middleware.",
       "Exposed the same endpoints to CLI and web clients with consistent error contracts.",
     ],
-    proof: "github.com/taterbro",
+    proof: "https://github.com/Taterbro/backendStageZero",
   },
   {
     id: "03",
@@ -93,7 +93,7 @@ function Portfolio() {
             cloud-native architectures, with an emphasis on clean design and performance.
           </p>
           <dl className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 text-sm">
-            <Meta label="Location" value="Remote · WAT (UTC+1)" />
+            <Meta label="Location" value="Abuja, Nigeria · Remote · WAT (UTC+1)" />
             <Meta label="Email" value="veecipher@proton.me" href="mailto:veecipher@proton.me" />
             <Meta label="GitHub" value="github.com/taterbro" href="https://github.com/taterbro" />
             <Meta label="Status" value="Open to backend roles" />
@@ -134,7 +134,19 @@ function Portfolio() {
                   </ul>
                 </div>
                 <div className="mt-4 ml-10 label">
-                  Proof · <span className="text-foreground/80 normal-case tracking-normal">{p.proof}</span>
+                  Proof ·{" "}
+                  {p.proof.startsWith("http") ? (
+                    <a
+                      href={p.proof}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="link-underline text-foreground/80 normal-case tracking-normal"
+                    >
+                      {p.proof.replace("https://github.com/", "github.com/")}
+                    </a>
+                  ) : (
+                    <span className="text-foreground/80 normal-case tracking-normal">{p.proof}</span>
+                  )}
                 </div>
               </li>
             ))}
@@ -234,7 +246,7 @@ function Portfolio() {
             </p>
             <p>
               I also learned to write less. Smaller PRs, smaller endpoints, smaller
-              functions. Easier to review, easier to debug at 2am.
+              functions. Easier to review.
             </p>
           </div>
         </Section>
