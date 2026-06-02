@@ -45,21 +45,21 @@ const projects = [
       "Implemented OAuth2 server flows and role-scoped middleware.",
       "Exposed the same endpoints to CLI and web clients with consistent error contracts.",
     ],
-    proof: "Featured below",
-    featured: true,
+    proof: "github.com/taterbro",
   },
   {
     id: "03",
     name: "Retry Engine",
     blurb:
       "Small HTTP service that accepts outbound HTTP jobs, persists them to SQLite, and retries them on failure with exponential backoff and jitter.",
-    stack: ["Go", "SQLite", "net/http"],
+    stack: ["Go", "SQLite", "net/http", "goroutines"],
     role: [
-      "Designed the job schema and state machine (pending → in-flight → done/failed).",
-      "Implemented the backoff scheduler with jitter and a max-attempts cap.",
-      "Added a worker pool with graceful shutdown and a status endpoint.",
+      "Designed the job schema and state machine (pending → retrying → completed/failed).",
+      "Built the background worker that ticks every 500ms and schedules retries with exponential backoff + jitter.",
+      "Implemented the API surface (POST /request, GET /requests/:id, GET /requests?status=) with full attempt history.",
     ],
-    proof: "github.com/taterbro",
+    proof: "Featured below",
+    featured: true,
   },
 ];
 
