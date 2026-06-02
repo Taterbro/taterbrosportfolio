@@ -12,7 +12,8 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Victor — Backend Developer" },
       {
         property: "og:description",
-        content: "HNG portfolio: Go, PostgreSQL, distributed systems, and cloud-native backend work.",
+        content:
+          "HNG portfolio: Go, PostgreSQL, distributed systems, and cloud-native backend work.",
       },
       { property: "og:type", content: "website" },
     ],
@@ -81,16 +82,12 @@ function Portfolio() {
         {/* Header */}
         <header className="mb-20">
           <div className="label mb-6">Portfolio · HNG</div>
-          <h1 className="font-mono text-3xl md:text-4xl font-medium tracking-tight">
-            Victor
-          </h1>
-          <p className="mt-2 text-base text-muted-foreground">
-            Backend Developer (Fullstack)
-          </p>
+          <h1 className="font-mono text-3xl md:text-4xl font-medium tracking-tight">Victor</h1>
+          <p className="mt-2 text-base text-muted-foreground">Backend Developer (Fullstack)</p>
           <p className="mt-8 text-base leading-relaxed max-w-prose">
-            Go backend developer focused on building scalable APIs, distributed systems,
-            and reliable backend services. Comfortable with Go, PostgreSQL, and
-            cloud-native architectures, with an emphasis on clean design and performance.
+            Go backend developer focused on building scalable APIs, distributed systems, and
+            reliable backend services. Comfortable with Go, PostgreSQL, and cloud-native
+            architectures, with an emphasis on clean design and performance.
           </p>
           <dl className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 text-sm">
             <Meta label="Location" value="Abuja, Nigeria · Remote · WAT (UTC+1)" />
@@ -145,7 +142,9 @@ function Portfolio() {
                       {p.proof.replace("https://github.com/", "github.com/")}
                     </a>
                   ) : (
-                    <span className="text-foreground/80 normal-case tracking-normal">{p.proof}</span>
+                    <span className="text-foreground/80 normal-case tracking-normal">
+                      {p.proof}
+                    </span>
                   )}
                 </div>
               </li>
@@ -157,7 +156,10 @@ function Portfolio() {
         <Section label="02" title="Backend Skills">
           <ul className="divide-y divide-border border-y border-border">
             {skills.map((s) => (
-              <li key={s.name} className="py-3 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
+              <li
+                key={s.name}
+                className="py-3 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6"
+              >
                 <span className="font-mono text-sm sm:w-56 shrink-0">{s.name}</span>
                 <span className="text-sm text-muted-foreground">{s.evidence}</span>
               </li>
@@ -170,17 +172,16 @@ function Portfolio() {
           <div className="space-y-8">
             <Block label="Problem">
               <p>
-                Non-technical analysts at Insighta needed answers from a relational
-                database without writing SQL. Existing dashboards were rigid; raw DB
-                access was unsafe. The engine accepts a plain-English question and
-                returns structured results, scoped to what the requesting user is
-                allowed to see.
+                Non-technical analysts at Insighta needed answers from a relational database without
+                writing SQL. Existing dashboards were rigid; raw DB access was unsafe. The engine
+                accepts a plain-English question and returns structured results, scoped to what the
+                requesting user is allowed to see.
               </p>
             </Block>
 
             <Block label="Architecture / Request flow">
               <pre className="font-mono text-xs leading-relaxed overflow-x-auto p-4 bg-card border border-border">
-{`client (CLI / Web)
+                {`client (CLI / Web)
    │  Bearer <access_token>
    ▼
 [ OAuth2 middleware ]  →  reject 401
@@ -204,24 +205,38 @@ function Portfolio() {
 
             <Block label="Key endpoints">
               <ul className="space-y-2 font-mono text-[13px]">
-                <li><span className="text-muted-foreground">POST</span> /v1/auth/token — OAuth2 token exchange</li>
-                <li><span className="text-muted-foreground">POST</span> /v1/query — submit a natural-language question</li>
-                <li><span className="text-muted-foreground">GET </span> /v1/query/:id — fetch result + cursor</li>
-                <li><span className="text-muted-foreground">GET </span> /v1/schema — role-filtered schema for client hints</li>
-                <li><span className="text-muted-foreground">GET </span> /v1/health — liveness + DB ping</li>
+                <li>
+                  <span className="text-muted-foreground">POST</span> /v1/auth/token — OAuth2 token
+                  exchange
+                </li>
+                <li>
+                  <span className="text-muted-foreground">POST</span> /v1/query — submit a
+                  natural-language question
+                </li>
+                <li>
+                  <span className="text-muted-foreground">GET </span> /v1/query/:id — fetch result +
+                  cursor
+                </li>
+                <li>
+                  <span className="text-muted-foreground">GET </span> /v1/schema — role-filtered
+                  schema for client hints
+                </li>
+                <li>
+                  <span className="text-muted-foreground">GET </span> /v1/health — liveness + DB
+                  ping
+                </li>
               </ul>
             </Block>
 
             <Block label="Challenge — preventing unsafe queries">
               <p>
-                The risk was obvious: NL→SQL can hallucinate tables, leak columns, or
-                generate expensive scans. I solved it in three layers. First, the
-                planner only emits SQL against a whitelist derived from the caller's
-                role, so columns the user can't see never appear in the plan. Second,
-                every query is parameterized and passed through a parser that rejects
-                multi-statement input, DDL, and writes. Third, the planner enforces a
-                row limit and a statement timeout at the connection level, so a bad
-                plan degrades into a clean error instead of a stuck request.
+                The risk was obvious: NL→SQL can hallucinate tables, leak columns, or generate
+                expensive scans. I solved it in three layers. First, the planner only emits SQL
+                against a whitelist derived from the caller's role, so columns the user can't see
+                never appear in the plan. Second, every query is parameterized and passed through a
+                parser that rejects multi-statement input, DDL, and writes. Third, the planner
+                enforces a row limit and a statement timeout at the connection level, so a bad plan
+                degrades into a clean error instead of a stuck request.
               </p>
             </Block>
           </div>
@@ -231,22 +246,30 @@ function Portfolio() {
         <Section label="04" title="Learning Reflection">
           <div className="space-y-4 text-[15px] leading-relaxed max-w-prose">
             <p>
-              HNG pushed me to think about backends as products other people depend on,
-              not just code that runs. The biggest shift was treating error contracts,
-              timeouts, and retries as first-class design — not things you bolt on after
-              an outage.
+              During the HNG internship, I had to make a real shift in how I see myself as a
+              developer. I started out as a frontend-focused developer who wanted to move into
+              backend but hesitated to fully commit. I often felt like I wasn’t “ready enough” to
+              make that jump. HNG challenged that mindset and made it clear that sometimes not being
+              fully prepared isn’t a valid reason to hold back. You adapt, learn, and figure things
+              out as you go.
             </p>
             <p>
-              Concretely: I got much faster at Go's concurrency primitives (contexts,
-              cancellation, worker pools), more disciplined about migrations and
-              indexes, and more honest about what "done" means — a feature isn't done
-              until it has logs, a health signal, and a sane failure mode. Writing the
-              retry engine taught me how much reliability comes from a few small,
-              boring decisions: jitter, max attempts, idempotency keys.
+              One of my biggest gains from the program was learning Go from scratch and using it in
+              real backend tasks. Beyond just writing code, I learned how to structure my work in a
+              way that fits into a team environment. Things I used to overlook, like writing proper
+              commit messages, maintaining clear documentation, and organizing codebases, became
+              important habits. I also gained a stronger understanding of backend fundamentals such
+              as retries, cursor-based navigation, and security considerations.
             </p>
             <p>
-              I also learned to write less. Smaller PRs, smaller endpoints, smaller
-              functions. Easier to review.
+              Another major area of growth was working under pressure and in a collaborative
+              setting. I learned that being a backend developer is not just about writing functional
+              code, it also involves making systems reliable, maintainable, and understandable for
+              others. I even stepped into a leadership role at times, which taught me that leading a
+              team requires more than technical ability; it requires communication, support, and
+              helping others push through challenges. Overall, HNG helped me grow from someone who
+              simply knows how to code into someone who can contribute effectively in a real
+              engineering team.
             </p>
           </div>
         </Section>
@@ -255,8 +278,8 @@ function Portfolio() {
         <Section label="05" title="Contact">
           <div className="space-y-3 text-base">
             <p className="text-muted-foreground max-w-prose">
-              Happy to talk about backend roles, freelance work, or anything Go,
-              PostgreSQL, or distributed systems related.
+              Happy to talk about backend roles, freelance work, or anything Go, PostgreSQL, or
+              distributed systems related.
             </p>
             <ul className="font-mono text-sm space-y-2 pt-2">
               <li>
