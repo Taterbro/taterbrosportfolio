@@ -134,7 +134,19 @@ function Portfolio() {
                   </ul>
                 </div>
                 <div className="mt-4 ml-10 label">
-                  Proof · <span className="text-foreground/80 normal-case tracking-normal">{p.proof}</span>
+                  Proof ·{" "}
+                  {p.proof.startsWith("http") ? (
+                    <a
+                      href={p.proof}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="link-underline text-foreground/80 normal-case tracking-normal"
+                    >
+                      {p.proof.replace("https://github.com/", "github.com/")}
+                    </a>
+                  ) : (
+                    <span className="text-foreground/80 normal-case tracking-normal">{p.proof}</span>
+                  )}
                 </div>
               </li>
             ))}
@@ -234,7 +246,7 @@ function Portfolio() {
             </p>
             <p>
               I also learned to write less. Smaller PRs, smaller endpoints, smaller
-              functions. Easier to review, easier to debug at 2am.
+              functions. Easier to review.
             </p>
           </div>
         </Section>
