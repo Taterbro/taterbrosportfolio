@@ -52,7 +52,7 @@ const projects = [
     id: "03",
     name: "Retry Engine",
     blurb:
-      "Small HTTP service that accepts outbound HTTP jobs, persists them to SQLite, and retries them on failure with exponential backoff and jitter.",
+      "HTTP service that accepts outbound HTTP jobs, persists them to SQLite, and retries them on failure with exponential backoff and jitter.",
     stack: ["Go", "SQLite", "net/http", "goroutines"],
     role: [
       "Designed the job schema and state machine (pending → retrying → completed/failed).",
